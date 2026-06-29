@@ -1,0 +1,36 @@
+class Solution {
+    public boolean isPalindrome(String s) {
+
+        int left = 0;
+        int right = s.length() - 1;
+
+        while (left < right) {
+
+            // Skip non-alphanumeric characters from left
+            while (left < right &&
+                   !Character.isLetterOrDigit(s.charAt(left))) {
+                left++;
+            }
+
+            // Skip non-alphanumeric characters from right
+            while (left < right &&
+                   !Character.isLetterOrDigit(s.charAt(right))) {
+                right--;
+            }
+
+            // Convert both characters to lowercase
+            char l = Character.toLowerCase(s.charAt(left));
+            char r = Character.toLowerCase(s.charAt(right));
+
+            // Compare characters
+            if (l != r) {
+                return false;
+            }
+
+            left++;
+            right--;
+        }
+
+        return true;
+    }
+}
